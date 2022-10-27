@@ -10,7 +10,7 @@ $pokemons = $pokemonController->readAll();
 
 
 
-<div id="carouselExampleCaptions" class="carousel slide w-25" data-bs-ride="false">
+<div id="carouselExampleCaptions" class="carousel slide w-50 mx-auto" data-bs-ride="false">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
             aria-current="true" aria-label="Slide 1"></button>
@@ -21,12 +21,13 @@ $pokemons = $pokemonController->readAll();
     </div>
     <div class="carousel-inner">
         <?php
-        foreach ($pokemons as $pokemon) :
+        $i = 0;
+        foreach ($pokemons as $pokemon):
             $type1 = $typeController->read($pokemon->getId_type1());
             $type2 = $typeController->read($pokemon->getId_type2());
         ?>
-        <div class="carousel-item active">
-            <img src="<?= $pokemon->getImage() ?>" class="d-block w-100" alt="...">
+        <div class="carousel-item <?= $i === 0 ? "active" : "" ?>" style="height: 620px; object-fit:container">
+            <img src="<?= $pokemon->getImage() ?>" class="d-block w-100" alt="<?= $pokemon->getName() ?>">
             <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50">
                 <h5><?= $pokemon->getName() ?></h5>
                 <p>
@@ -40,7 +41,7 @@ $pokemons = $pokemonController->readAll();
                 <p>Originaire de <?= $pokemon->getRegion() ?></p>
             </div>
         </div>
-        <?php endforeach ?>
+        <?php $i++; endforeach ?>
 
 
     </div>
