@@ -4,6 +4,7 @@ class Pokemon
 {
     private int $id;
     private string $name;
+    private string $description;
     private int $number;
     private int $id_type1;
     private int $id_type2;
@@ -113,6 +114,17 @@ class Pokemon
     {
         $this->region = $region;
 
+        return $this;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
         return $this;
     }
 }

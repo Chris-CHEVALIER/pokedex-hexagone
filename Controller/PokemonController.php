@@ -25,8 +25,9 @@ class PokemonController
 
     public function create(Pokemon $pokemon)
     {
-        $req = $this->db->prepare("INSERT INTO `pokemon` (name, number, id_type1, id_type2, image, region) VALUES (:name, :number, :id_type1, :id_type2, :image, :region)");
+        $req = $this->db->prepare("INSERT INTO `pokemon` (name, description, number, id_type1, id_type2, image, region) VALUES (:name, :description, :number, :id_type1, :id_type2, :image, :region)");
         $req->bindValue(":name", $pokemon->getName(), PDO::PARAM_STR);
+        $req->bindValue(":description", $pokemon->getDescription(), PDO::PARAM_STR);
         $req->bindValue(":number", $pokemon->getNumber(), PDO::PARAM_INT);
         $req->bindValue(":id_type1", $pokemon->getId_type1(), PDO::PARAM_INT);
         $req->bindValue(":id_type2", $pokemon->getId_type2(), PDO::PARAM_INT);
@@ -37,9 +38,10 @@ class PokemonController
 
     public function update(Pokemon $pokemon)
     {
-        $req = $this->db->prepare("UPDATE `pokemon` SET name = :name, number = :number, id_type1 = :id_type1, id_type2 = :id_type2, image = :image, region = :region WHERE id = :id");
+        $req = $this->db->prepare("UPDATE `pokemon` SET name = :name, description = :description, number = :number, id_type1 = :id_type1, id_type2 = :id_type2, image = :image, region = :region WHERE id = :id");
         $req->bindValue(":id", $pokemon->getId(), PDO::PARAM_INT);
         $req->bindValue(":name", $pokemon->getName(), PDO::PARAM_STR);
+        $req->bindValue(":description", $pokemon->getDescription(), PDO::PARAM_STR);
         $req->bindValue(":number", $pokemon->getNumber(), PDO::PARAM_INT);
         $req->bindValue(":id_type1", $pokemon->getId_type1(), PDO::PARAM_INT);
         $req->bindValue(":id_type2", $pokemon->getId_type2(), PDO::PARAM_INT);

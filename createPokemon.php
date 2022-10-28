@@ -23,6 +23,12 @@ $types = $typeController->readAll();
         <input type="text" name="name" class="form-control" id="name" placeholder="Nom du Pokémon">
     </div>
 
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" class="form-control" id="description" placeholder="Nom du Pokémon"></textarea>
+    </div>
+
+
     <label for="id_type1" class="form-label">Type 1</label>
     <select name="id_type1" id="id_type1" class="form-control">
         <?php foreach ($types as $type) { ?>
